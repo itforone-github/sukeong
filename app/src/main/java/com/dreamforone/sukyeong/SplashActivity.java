@@ -9,8 +9,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
+
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import util.LocationPosition;
 

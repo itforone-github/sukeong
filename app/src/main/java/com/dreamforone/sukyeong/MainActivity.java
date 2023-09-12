@@ -18,9 +18,7 @@ import android.os.Message;
 import android.os.Parcelable;
 import android.os.StrictMode;
 import android.provider.MediaStore;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +39,10 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -674,6 +676,7 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == FILECHOOSER_NORMAL_REQ_CODE) {
             if (filePathCallbackNormal == null) return;
             Uri result = (data == null || resultCode != RESULT_OK) ? null : data.getData();
@@ -683,7 +686,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (requestCode == FILECHOOSER_LOLLIPOP_REQ_CODE) {
             Uri[] result = new Uri[0];
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                if(resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     result = (data == null) ? new Uri[]{mCapturedImageURI} : WebChromeClient.FileChooserParams.parseResult(resultCode, data);
                 }
 
